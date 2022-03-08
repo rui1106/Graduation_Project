@@ -84,12 +84,12 @@
                            autocomplete="off">
                     <span v-show="error_phone" class="error_tip" style="display: none; color:red; float: right;">{{error_phone_message}}</span>
                 </div>
-                <div class="form_group">
+                <!-- <div class="form_group">
                     <img :src="image_code_url" @click="generate_image_code" class="get_pic_code" id="captcha_img">
                     <input @blur="check_image_code" type="text" v-model="image_code" name="code_pwd" id="imagecode" class="form-control" autocomplete="off">
                     <div class="input_tip">图形验证码</div>
                      <span v-show="error_image_code" class="error_tip" style="display: none; color:red; float: right;">{{ error_image_code_message }}</span>
-                </div>
+                </div> -->
                 <div class="form_group">
                     <input type="text" v-model="sms_code" @blur="check_sms_code" name="sms_code" id="smscode" class="form-control" autocomplete="off">
                     <div class="input_tip">手机验证码

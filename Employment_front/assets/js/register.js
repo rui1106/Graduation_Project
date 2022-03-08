@@ -1,7 +1,7 @@
 var vm = new Vue({
     el: '#app',
-    data:{
-        host:host,
+    data: {
+        host: host,
         error_name: false,
         error_password: false,
         error_phone: false,
@@ -10,36 +10,36 @@ var vm = new Vue({
         error_name_message: '',
         error_phone_message: '',
         error_sms_code_message: '',
-        error_image_code:'',
+        // error_image_code:'',
         sms_code_tip: '获取短信验证码',
         sending_flag: false, // 正在发送短信标志
 
         // 图形验证码:
-        image_code_id: '',
-        image_code_url: '',
+        // image_code_id: '',
+        // image_code_url: '',
 
         username: '',
         password: '',
         password2: '',
         mobile: '',
         sms_code: '',
-        allow: false,
-        image_code:'',
-        error_image_code_message:'',
-    
+        // allow: false,
+        image_code: '',
+        error_image_code_message: '',
+
     },
-    mounted: function(){
-        this.generate_image_code();
+    mounted: function () {
+        // this.generate_image_code();
     },
-    methods:{
-        generate_image_code:function(){
-            // 生成一个编号 : 严格一点的使用uuid保证编号唯一， 不是很严谨的情况下，也可以使用时间戳
-            this.image_code_id = generateUUID();
-            // 设置页面中图片验证码img标签的src属性
-            this.image_code_url = this.host + "/image_codes/" + this.image_code_id + "/";
-        },
+    methods: {
+        // generate_image_code:function(){
+        //     // 生成一个编号 : 严格一点的使用uuid保证编号唯一， 不是很严谨的情况下，也可以使用时间戳
+        //     this.image_code_id = generateUUID();
+        //     // 设置页面中图片验证码img标签的src属性
+        //     this.image_code_url = this.host + "/image_codes/" + this.image_code_id + "/";
+        // },
         // send_sms_code:function(){
-            
+
         // },
         // 检查用户名
         check_username: function () {
@@ -55,9 +55,9 @@ var vm = new Vue({
             if (this.error_name == false) {
                 var url = this.host + '/usernames/' + this.username + '/count/';
                 axios.get(url, {
-                    responseType: 'json',
-                    withCredentials:true,
-                })
+                        responseType: 'json',
+                        withCredentials: true,
+                    })
                     .then(response => {
                         if (response.data.count > 0) {
                             this.error_name_message = '用户名已存在';
@@ -92,9 +92,9 @@ var vm = new Vue({
             if (this.error_phone == false) {
                 var url = this.host + '/mobiles/' + this.mobile + '/count/';
                 axios.get(url, {
-                    responseType: 'json',
-                     withCredentials:true,
-                })
+                        responseType: 'json',
+                        withCredentials: true,
+                    })
                     .then(response => {
                         if (response.data.count > 0) {
                             this.error_phone_message = '手机号已存在';
@@ -109,14 +109,14 @@ var vm = new Vue({
             }
         },
         // 检查图片验证码
-        check_image_code: function (){
-            if(!this.image_code) {
-                this.error_image_code_message = '请填写图片验证码';
-                this.error_image_code = true;
-            } else {
-                this.error_image_code = false;
-            }
-        },
+        // check_image_code: function (){
+        //     if(!this.image_code) {
+        //         this.error_image_code_message = '请填写图片验证码';
+        //         this.error_image_code = true;
+        //     } else {
+        //         this.error_image_code = false;
+        //     }
+        // },
         check_sms_code: function () {
             if (!this.sms_code) {
                 this.error_sms_code_message = '请填写短信验证码';
@@ -148,14 +148,15 @@ var vm = new Vue({
             }
 
             // 向后端接口发送请求，让后端发送短信验证码
-            var url = this.host + '/sms_codes/' + this.mobile + '/' + '?image_code=' + this.image_code
-                + '&image_code_id=' + this.image_code_id
+            // var url = this.host + '/sms_codes/' + this.mobile + '/' + '?image_code=' + this.image_code
+            //     + '&image_code_id=' + this.image_code_id
+            var url = this.host + '/sms_codes/' + this.mobile + '/'
             axios.get(url, {
-                responseType: 'json',
-                withCredentials:true,
-            })
+                    responseType: 'json',
+                    withCredentials: true,
+                })
                 .then(response => {
-                    if (response.data.code==0){
+                    if (response.data.code == 0) {
                         // 表示后端发送短信成功
                         // 倒计时60秒，60秒后允许用户再次点击发送短信验证码的按钮
                         var num = 60;
@@ -174,11 +175,11 @@ var vm = new Vue({
                                 this.sms_code_tip = num + '秒';
                             }
                         }, 1000, 60)
-                    }else{
+                    } else {
                         this.error_sms_code_message = response.data.errmsg;
                         this.error_sms_code = true;
                     }
-                    
+
                 })
                 .catch(error => {
                     if (error.response.status == 400) {
@@ -191,7 +192,7 @@ var vm = new Vue({
                 })
         },
         // 注册
-        on_submit:function(){
+        on_submit: function () {
             this.check_username();
             this.check_pwd();
             this.check_phone();
@@ -199,33 +200,32 @@ var vm = new Vue({
             axios.post(this.host + '/register/', {
                     username: this.username,
                     password: this.password,
-                    mobile: this.mobile,
+                    phone: this.mobile,
                     sms_code: this.sms_code,
-                    allow: this.allow
+                    // allow: this.allow
                 }, {
                     responseType: 'json',
-                    withCredentials:true,
+                    withCredentials: true,
                 })
-                    .then(response => {
-                        if (response.data.code==0) {
-                           location.href = 'login.html';
-                        }
-                        if (response.data.code == 400) {
-                            alert(response.data.errmsg)
-                        }
-                    })
-                    .catch(error => {
-                        if (error.response.code == 400) {
-                            if ('non_field_errors' in error) {
-                                this.error_sms_code_message = error.response;
-                            } else {
-                                this.error_sms_code_message = '数据有误';
-                            }
-                            this.error_sms_code = true;
+                .then(response => {
+                        localStorage.clear();
+                        localStorage.token = response.data.token;
+                        localStorage.username = response.data.username;
+                        localStorage.user_id = response.data.id;
+                        location.href = 'login.html';
+                })
+                .catch(error => {
+                    if (error.response.code == 400) {
+                        if ('non_field_errors' in error) {
+                            this.error_sms_code_message = error.response;
                         } else {
-                            console.log(error);
+                            this.error_sms_code_message = '数据有误';
                         }
-                    })
+                        this.error_sms_code = true;
+                    } else {
+                        console.log(error);
+                    }
+                })
         }
     }
 })
