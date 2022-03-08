@@ -24,11 +24,12 @@ SECRET_KEY = '@b*lv-z5c2t#e&4=6dn_=i_9x7a$ae$p3o0u!kh#lt3knat=t@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -93,7 +95,6 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = 'users.User'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -151,7 +152,7 @@ CACHES = {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     },
-    "code": {  # code
+    "verify_codes": {  # code
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://127.0.0.1:6379/2",
         "OPTIONS": {
@@ -187,7 +188,7 @@ LOGGING = {
             'formatter': 'simple'
         },
         'file': {  # 向文件中输出日志
-            'level': 'INFO',
+            'level': 'ERROR',
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': os.path.join(BASE_DIR, 'logs/employment.log'),  # 日志文件的位置
             'maxBytes': 300 * 1024 * 1024,
@@ -212,5 +213,5 @@ CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
 
 REST_FRAMEWORK = {
     # 异常处理
-    'EXCEPTION_HANDLER': 'Employment_System.utils.exceptions.exception_handler',
+    'EXCEPTION_HANDLER': 'utils.exceptions.exception_handler',
 }
