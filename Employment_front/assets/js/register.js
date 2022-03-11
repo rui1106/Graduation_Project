@@ -212,19 +212,21 @@ var vm = new Vue({
                         localStorage.token = response.data.token;
                         localStorage.username = response.data.username;
                         localStorage.user_id = response.data.id;
-                        location.href = 'login.html';
+                        location.href = 'index.html';
                 })
                 .catch(error => {
-                    if (error.response.code == 400) {
-                        if ('non_field_errors' in error) {
-                            this.error_sms_code_message = error.response;
-                        } else {
-                            this.error_sms_code_message = '数据有误';
-                        }
-                        this.error_sms_code = true;
-                    } else {
-                        console.log(error);
-                    }
+                    this.error_sms_code_message = '注册失败';
+                    this.error_sms_code = true;
+                    // if (error.response.code == 400) {
+                    //     if ('non_field_errors' in error) {
+                    //         this.error_sms_code_message = error.response;
+                    //     } else {
+                    //         this.error_sms_code_message = '数据有误';
+                    //     }
+                    //     this.error_sms_code = true;
+                    // } else {
+                    //     console.log(error);
+                    // }
                 })
         }
     }

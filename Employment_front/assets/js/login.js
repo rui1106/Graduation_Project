@@ -45,19 +45,19 @@ var vm = new Vue({
 
             if (this.error_username == false && this.error_pwd == false) {
                 axios.post(this.host + '/authorizations/', {
-                    username: this.username,
-                    password: this.password,
-                    remembered:this.remember,
-                }, {
-                    responseType: 'json',
-                    // 发送请求的时候, 携带上cookie
-                    withCredentials: true,
-                    // crossDomain: true
-                })
+                        username: this.username,
+                        password: this.password,
+                        // remembered:this.remember,
+                    }, {
+                        responseType: 'json',
+                        // 发送请求的时候, 携带上cookie
+                        withCredentials: true,
+                        // crossDomain: true
+                    })
                     .then(response => {
 
                         if (response.data.code == 0) {
-                            sessionStorage.clear();
+                            // sessionStorage.clear();
                             localStorage.clear();
                             localStorage.token = response.data.token;
                             localStorage.username = response.data.username;
@@ -68,9 +68,9 @@ var vm = new Vue({
                                 return_url = '/index.html';
                             }
                             location.href = return_url;
-                        } else if (response.data.code == 400) {
+                        } else {
                             this.error_pwd_message = '用户名或密码错误';
-                             this.error_pwd = true;
+                            this.error_pwd = true;
                         }
                     })
                     .catch(error => {
@@ -83,6 +83,6 @@ var vm = new Vue({
                     })
             }
         },
-    
+
     }
 });
