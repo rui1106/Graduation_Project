@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 # Create your models here.
@@ -26,4 +25,3 @@ class Collection_job(models.Model):
     class Meta:
         db_table = 'tb_collection'
         verbose_name = "关注"
-

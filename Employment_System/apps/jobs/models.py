@@ -2,6 +2,8 @@ from django.db import models
 
 
 # Create your models here.
+
+
 class JobInfo(models.Model):
     """招聘"""
     name = models.CharField(max_length=255, null=False, verbose_name='职位名称')
@@ -13,10 +15,8 @@ class JobInfo(models.Model):
     company = models.CharField(max_length=255, verbose_name='招聘公司')
     request = models.CharField(max_length=255, verbose_name='专业要求')
 
-    # create_time = models.CharField(max_length=20, verbose_name="发布日期")
-
     class Meta:
-        db_table = 'tb_jobs'
+        db_table = 'workinfo_copy1'
 
     def __str__(self):
         return self.name
