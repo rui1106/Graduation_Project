@@ -216,6 +216,8 @@ CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
 REST_FRAMEWORK = {
     # 异常处理
     'EXCEPTION_HANDLER': 'utils.exceptions.exception_handler',
+# 分页
+    'DEFAULT_PAGINATION_CLASS': 'utils.pagination.StandardResultsSetPagination',
 }
 
 # JWT
