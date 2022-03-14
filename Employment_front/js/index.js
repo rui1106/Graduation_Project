@@ -2,10 +2,10 @@ var vm = new Vue({
     el: '#app',
     data: {
         host: host,
-        username: '',
+        username: localStorage.username,
         works:[
             {
-                title: "",
+                name: "",
                 salary: "",
                 location: "",
                 company: "",
@@ -14,5 +14,22 @@ var vm = new Vue({
             }
         ]
 
+    },
+    mounted(){
+        this.showindex()
+    },
+    methods:{
+        showindex(){
+            axios.get(this.host+"/showindex/",{
+               response:"json" 
+            })
+            .then(response=>{
+                this.works =  response.data.slice(0,4)
+                console.log(this.works)
+            })
+            .catch(error =>{
+                console.log(error.response.data);
+            })
+        }
     }
 })

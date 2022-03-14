@@ -61,7 +61,7 @@ var vm = new Vue({
                             localStorage.clear();
                             localStorage.token = response.data.token;
                             localStorage.username = response.data.username;
-                            localStorage.user_id = response.data.id;
+                            localStorage.user_id = response.data.user_id;
                             // 跳转页面
                             var return_url = this.get_query_string('next');
                             if (!return_url) {
