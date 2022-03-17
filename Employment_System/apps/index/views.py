@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 
 from apps.index.serializers import IndexSerializer
 from apps.jobs.models import JobInfo
+from apps.users.models import Collection_job
 
 
 class ShowIndexView(ListAPIView):
@@ -17,8 +18,19 @@ class ShowIndexView(ListAPIView):
 
 
 class ShowDetail(APIView):
-    def get(self, request, id):
-        job = JobInfo.objects.get(id=id)
+    def get(self, request, pk):
+        user_id = request.user.id
+        # print('11111111111111111111', user_id)
+        job = JobInfo.objects.get(id=pk)
+        try:
+            j = Collection_job.objects.filter(users_id = user_id, jobs_id=job.id)
+            if j:
+                collection = False
+            else:
+                collection = True
+        except Exception as e:
+            print(e)
+            return JsonResponse({"code": 400, "message": "查询失败"})
         work = {
             "id": job.id,
             "name": job.name,
@@ -27,7 +39,8 @@ class ShowDetail(APIView):
             "company": job.company,
             "degree_required": job.degree_required,
             "number": job.number,
-            "request": job.request
+            "request": job.request,
+            "collection": collection
         }
 
         return JsonResponse({"code": 0, "message": "OK", "work": work})
