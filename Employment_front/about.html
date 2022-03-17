@@ -17,6 +17,8 @@
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -35,203 +37,229 @@
 </head>
 
 <body class="sub_page">
+  <div id="app">
+    <div class="hero_area">
 
-  <div class="hero_area">
+      <div class="hero_bg_box">
+        <img src="images/hero-bg.png" alt="">
+      </div>
 
-    <div class="hero_bg_box">
-      <img src="images/hero-bg.png" alt="">
-    </div>
+      <!-- header section strats -->
+      <header class="header_section">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="index.html">
+              <span>
+                Designal
+              </span>
+            </a>
 
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
-            <span>
-              Designal
-            </span>
-          </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""> </span>
+            </button>
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class=""> </span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav  ">
-              <li class="nav-item active">
-                <a class="nav-link" href="index.html">首页 <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="service.html">招聘信息</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="collect.html">收藏</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="center.html">个人中心</a>
-              </li>
-              <!-- <li class="nav-item">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">首页 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="service.html">招聘信息</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="collect.html">收藏</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="center.html">个人中心</a>
+                </li>
+                <!-- <li class="nav-item">
                 <a class="nav-link" href="portfolio.html">用户管理</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact.html">就业信息管理</a>
               </li> -->
-              <!-- <form class="form-inline">
+                <!-- <form class="form-inline">
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form> -->
-            </ul>
-            <div v-if="username">欢迎！<em style="color: pink">{{username}}</em>
-              <a class="quit" @click="fnQuit">退出</a>
+              </ul>
+              <div v-if="username">欢迎！<em style="color: pink">{{username}}</em>
+                <!-- <a class="quit" @click="fnQuit">退出</a> -->
+                <a class="quit">退出</a>
+              </div>
+              <div v-else>
+                <a href="login.html" class="red" style="color: pink">登 录</a>
+                <span>|</span>
+                <a href="register.html" class="red" style="color: pink">注 册</a>
+              </div>
             </div>
-            <div v-else>
-              <a href="login.html" class="red" style="color: pink">登 录</a>
-              <span>|</span>
-              <a href="register.html" class="red" style="color: pink">注 册</a>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <!-- end header section -->
-  </div>
-
-  <!-- about section -->
-
-  <section class="about_section layout_padding layout_margin-top layout_margin-bottom">
-    <div class="container  ">
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="img-box">
-            <img src="images/about-img.png" alt="">
-          </div>
+          </nav>
         </div>
-        <div class="col-md-6">
-          <div class="detail-box">
-            <div class="heading_container">
-              <h2>
-                About <span>Us</span>
-              </h2>
-            </div>
-            <p>
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-              in some form, by injected humour, or randomised words which don't look even slightly believable. If you
-              are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
-              the middle of text. All
-            </p>
-            <a href="">
-              Read More
-            </a>
-          </div>
-        </div>
-      </div>
+      </header>
+      <!-- end header section -->
     </div>
-  </section>
 
-  <!-- end about section -->
+    <!-- about section -->
 
-  <!-- footer section -->
-  <footer class="footer_section">
-    <div class="footer_bg_box">
-      <img src="images/footer-bg.png" alt="">
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-lg-3 footer_col">
-          <div class="footer_contact">
-            <h4>
-              Reach at..
-            </h4>
-            <div class="contact_link_box">
+    <section class="about_section layout_padding layout_margin-top layout_margin-bottom">
+      <div class="container  ">
+        <div class="row">
+          <div class="col-md-6 ">
+            <div class="img-box">
+              <img src="images/about-img.png" alt="">
+            </div>
+          </div>
+          <div class="conter_con">
+            <div class="detail_about clearfix">
+              <div class="position-head" data-companyid="431345">
+                <div class="position-content clearfix ">
+                  <div class="position-content-l">
+                    <div class="job-name" title="">
+                      <!-- <h1 class="name"> -->
+                      <span class="position-name-wrap">
+                        <h3>
+                          <span class="position-head-wrap-name">{{work.name}}</span>
+                        </h3>
+                        <div class="label-campus">{{work.name}}</div>
+                      </span>
+                      <i class="wise-icon"></i>
+                      <!-- </h1> -->
+                      <div class="marEdit">
+                      </div>
+                    </div>
+                    <dd class="job_request">
+                      <span class="salary">{{work.salary}} </span>
+                      <span>/{{work.location}} /</span>
+                      <span> 招聘公司:{{work.company}} /</span>
+                      <span>{{work.degree_required}} /</span>
+                      <span>{{work.number}}</span>
+                    </dd>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <dd class="job-advantage">
+                <h4>
+                  <span class="advantage">专业要求：</span>
+                </h4>
+                <p>{{work.request}}</p>
+              </dd>
+              <!-- <a href="javascript:;" class="collection block-center" data-news-id="{{ jobinfo.id }}">收藏</a>
+              <a href="javascript:;" class="collected block-center" data-news-id="{{ jobinfo.id }}"><span
+                  class="out">已收藏</span><span class="over">取消收藏</span></a> -->
+              <a href="javascript:;" class="collection block-center">收藏</a>
+              <a href="javascript:;" class="collected block-center"><span
+                  class="out">已收藏</span><span class="over">取消收藏</span></a>
+            </div>
+          </div>
+    </section>
+
+    <!-- end about section -->
+
+    <!-- footer section -->
+    <footer class="footer_section">
+      <div class="footer_bg_box">
+        <img src="images/footer-bg.png" alt="">
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-3 footer_col">
+            <div class="footer_contact">
+              <h4>
+                Reach at..
+              </h4>
+              <div class="contact_link_box">
+                <a href="">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span>
+                    Location
+                  </span>
+                </a>
+                <a href="">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  <span>
+                    Call +01 1234567890
+                  </span>
+                </a>
+                <a href="">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <span>
+                    demo@gmail.com
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="footer_social">
               <a href="">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  Location
-                </span>
+                <i class="fa fa-facebook" aria-hidden="true"></i>
               </a>
               <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Call +01 1234567890
-                </span>
+                <i class="fa fa-twitter" aria-hidden="true"></i>
               </a>
               <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>
-                  demo@gmail.com
-                </span>
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
               </a>
             </div>
           </div>
-          <div class="footer_social">
-            <a href="">
-              <i class="fa fa-facebook" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-linkedin" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3 footer_col">
-          <div class="footer_detail">
-            <h4>
-              About
-            </h4>
-            <p>
-              Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin
-              words, combined with a handful
-            </p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-2 mx-auto footer_col">
-          <div class="footer_link_box">
-            <h4>
-              Links
-            </h4>
-            <div class="footer_links">
-              <a class="active" href="index.html">
-                Home
-              </a>
-              <a class="" href="about.html">
+          <div class="col-md-6 col-lg-3 footer_col">
+            <div class="footer_detail">
+              <h4>
                 About
-              </a>
-              <a class="" href="service.html">
-                Services
-              </a>
-              <a class="" href="portfolio.html">
-                Portfolio
-              </a>
-              <a class="" href="contact.html">
-                Contact Us
-              </a>
+              </h4>
+              <p>
+                Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin
+                words, combined with a handful
+              </p>
             </div>
           </div>
-        </div>
-        <div class="col-md-6 col-lg-3 footer_col ">
-          <h4>
-            Subscribe
-          </h4>
-          <form action="#">
-            <input type="text" placeholder="Enter email" />
-            <button type="submit">
+          <div class="col-md-6 col-lg-2 mx-auto footer_col">
+            <div class="footer_link_box">
+              <h4>
+                Links
+              </h4>
+              <div class="footer_links">
+                <a class="active" href="index.html">
+                  Home
+                </a>
+                <a class="" href="about.html">
+                  About
+                </a>
+                <a class="" href="service.html">
+                  Services
+                </a>
+                <a class="" href="portfolio.html">
+                  Portfolio
+                </a>
+                <a class="" href="contact.html">
+                  Contact Us
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 footer_col ">
+            <h4>
               Subscribe
-            </button>
-          </form>
+            </h4>
+            <form action="#">
+              <input type="text" placeholder="Enter email" />
+              <button type="submit">
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-info">
+          <p>Copyright &copy; 2021.Company name All rights reserved.</p>
         </div>
       </div>
-      <div class="footer-info">
-        <p>Copyright &copy; 2021.Company name All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
   <!-- footer section -->
 
   <!-- jQery -->
@@ -249,7 +277,11 @@
   <script type="text/javascript" src="js/custom.js"></script>
   <!-- Google Map -->
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"> -->
-  </script>
+  <!-- </script> -->
+  <script type="text/javascript" src="assets/js/host.js"></script>
+  <script type="text/javascript" src="assets/js/axios-0.18.0.min.js"></script>
+  <script type="text/javascript" src="assets/js/vue-2.5.16.js"></script>
+  <script src="js/about.js"></script>
   <!-- End Google Map -->
 
 </body>

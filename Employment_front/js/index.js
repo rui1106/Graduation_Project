@@ -5,6 +5,7 @@ var vm = new Vue({
         username: localStorage.username,
         works:[
             {
+                id: "",
                 name: "",
                 salary: "",
                 location: "",
@@ -19,16 +20,20 @@ var vm = new Vue({
         this.showindex()
     },
     methods:{
+        Detail(id){
+            // this.$router.push({ path: "/about.html", query: { id: id } });
+            location.href = "about.html?" + id 
+        },
         showindex(){
             axios.get(this.host+"/showindex/",{
                response:"json" 
             })
             .then(response=>{
-                this.works =  response.data.slice(0,4)
+                this.works =  response.data.results;
                 console.log(this.works)
             })
             .catch(error =>{
-                console.log(error.response.data);
+                console.log(获取失败);
             })
         }
     }

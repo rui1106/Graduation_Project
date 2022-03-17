@@ -115,7 +115,7 @@
           </div>
           <div class="row">
             <div class="col-md-6 " v-for="item in works" :key="item.id">
-              <div class="box ">
+              <div class="box " @click="Detail(item.id)">
                 <div class="img-box">
                   <img src="images/s1.png" alt="">
                 </div>
@@ -126,7 +126,7 @@
                   <p>
                     {{item.salary}} /{{item.location}} / 招聘公司:{{item.company}} / {{item.degree_required}} / {{item.number}}
                   </p>
-                  <a href="">
+                  <a href="#">
                     Read More
                   </a>
                 </div>

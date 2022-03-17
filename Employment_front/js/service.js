@@ -21,6 +21,10 @@ var vm = new Vue({
         this.showservice();
     },
     methods:{
+        Detail(id){
+            // this.$router.push({ path: "/about.html", query: { id: id } });
+            location.href = "about.html?" + id 
+        },
         showservice(){
             axios.get(this.host+"/showservice/", {
                 params:{
@@ -34,7 +38,7 @@ var vm = new Vue({
                 this.count = response.data.count
             })
             .catch(error =>{
-                console.log(error.response.data)
+                console.log("获取失败")
             })
         },
         // 点击页数
