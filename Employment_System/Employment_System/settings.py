@@ -210,13 +210,14 @@ LOGGING = {
 # CORS
 CORS_ORIGIN_WHITELIST = (
     'http://192.168.84.54:8080',
+    'http://192.168.84.57:8080',
 )
 CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
 
 REST_FRAMEWORK = {
     # 异常处理
     'EXCEPTION_HANDLER': 'utils.exceptions.exception_handler',
-# 分页
+    # 分页
     'DEFAULT_PAGINATION_CLASS': 'utils.pagination.StandardResultsSetPagination',
 }
 
