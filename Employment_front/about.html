@@ -150,8 +150,8 @@
               <!-- <a href="javascript:;" class="collection block-center" data-news-id="{{ jobinfo.id }}">收藏</a>
               <a href="javascript:;" class="collected block-center" data-news-id="{{ jobinfo.id }}"><span
                   class="out">已收藏</span><span class="over">取消收藏</span></a> -->
-              <a href="javascript:;" class="collection block-center">收藏</a>
-              <a href="javascript:;" class="collected block-center"><span
+              <a href="javascript:;" class="collection block-center" v-if="work.collection" @click="Collect(work.id)">收藏</a>
+              <a href="javascript:;" class="collected block-center" v-else @click="CancelCollect(work.id)"><span
                   class="out">已收藏</span><span class="over">取消收藏</span></a>
             </div>
           </div>
