@@ -17,13 +17,14 @@ class ShowIndexView(ListAPIView):
         return JobInfo.objects.all()
 
 
+# 展示招聘详情
 class ShowDetail(APIView):
     def get(self, request, pk):
         user_id = request.user.id
         # print('11111111111111111111', user_id)
         job = JobInfo.objects.get(id=pk)
         try:
-            j = Collection_job.objects.filter(users_id = user_id, jobs_id=job.id)
+            j = Collection_job.objects.filter(users_id=user_id, jobs_id=job.id)
             if j:
                 collection = False
             else:
