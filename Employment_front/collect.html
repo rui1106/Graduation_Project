@@ -83,9 +83,8 @@
                 </button>
               </form> -->
               </ul>
-              <div v-if="username">欢迎！<em style="color: pink">{{username}}</em>
-                <!-- <a class="quit" @click="fnQuit">退出</a> -->
-                <a class="quit">退出</a>
+              <div v-if="username">欢迎！<strong style="color: pink; cursor: pointer">{{username}}</strong>
+                <a class="quit" @click="logout" style="cursor: pointer">退出</a>
               </div>
               <div v-else>
                 <a href="login.html" class="red" style="color: pink">登 录</a>

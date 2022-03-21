@@ -20,6 +20,11 @@ var vm = new Vue({
         this.showcollect();
     },
     methods: {
+        logout: function () {
+            // sessionStorage.clear();
+            localStorage.clear();
+            location.href = '/login.html';
+        },
         Detail(id) {
             // this.$router.push({ path: "/about.html", query: { id: id } });
             location.href = "about.html?" + id
@@ -40,6 +45,7 @@ var vm = new Vue({
                     this.count = response.data.count
                 })
                 .catch(error => {
+                    location.href = "login.html"
                     console.log("获取失败")
                 })
         },
