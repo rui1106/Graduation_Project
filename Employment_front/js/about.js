@@ -20,6 +20,11 @@ var vm = new Vue({
         this.showDetail();
     },
     methods: {
+        logout: function(){
+            // sessionStorage.clear();
+            localStorage.clear();
+            location.href = '/login.html';
+        },
         showDetail() {
             var query = window.location.search.substring(1);
             console.log(query)

@@ -21,6 +21,11 @@ var vm = new Vue({
         this.showservice();
     },
     methods:{
+        logout: function(){
+            // sessionStorage.clear();
+            localStorage.clear();
+            location.href = '/login.html';
+        },
         Detail(id){
             // this.$router.push({ path: "/about.html", query: { id: id } });
             location.href = "about.html?" + id 

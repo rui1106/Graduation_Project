@@ -963,6 +963,7 @@ a:focus {
 /* 分页样式 */
 
 .pagenation {
+  /* cursor: pointer; */
   height: 32px;
   text-align: center;
   font-size: 0;
@@ -976,7 +977,8 @@ a:focus {
   font-size: 12px;
   padding: 7px 10px;
   color: #666;
-  margin: 5px
+  margin: 5px;
+  cursor: pointer
 }
 
 .pagenation .active {
@@ -988,10 +990,10 @@ a:focus {
   margin-top: 38px;
 }
 
-.detail_about{
-  margin:10px 0;
-  border-bottom:1px solid #ebebeb;
-  padding:10px 0;
+.detail_about {
+  margin: 10px 0;
+  border-bottom: 1px solid #ebebeb;
+  padding: 10px 0;
 }
 
 /* 关注样式 */
