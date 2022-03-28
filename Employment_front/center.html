@@ -69,7 +69,7 @@
                             <div class="author-info" style="background-image:url(image/background/3.jpg)">
                                 <div class="image"><img :src="user.avatar_url" alt="" id="show_img"></div>
                                 <div class="author">
-                                    <h3>{{ username }}</h3>
+                                    <h3>{{ user.username }}</h3>
                                     <div class="designation">
                                         Hi i’m
                                         <div class="typing-title">
@@ -112,7 +112,7 @@
                                         <div class="image"><img :src="user.avatar_url" alt="" class="index_img">
                                         </div>
                                         <div class="author">
-                                            <h3>{{ username }}</h3>
+                                            <h3>{{ user.username }}</h3>
                                             <div class="designation">
                                                 Hi i’m
                                                 <div class="typing-title">
@@ -156,7 +156,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <ul class="list-style-one">
-                                                        <li><strong>姓名:</strong> {{ username }}</li>
+                                                        <li><strong>姓名:</strong> {{ user.username }}</li>
                                                         <li><strong>电话:</strong> {{ user.phone }}</li>
 
                                                     </ul>
@@ -248,17 +248,17 @@
                                                 <div class="row clearfix">
                                                     <h5>原密码:</h5>
                                                     <div class="col-md-6 form-group">
-                                                        <input type="password" name="old_psw" class="old_psw">
+                                                        <input type="password" name="old_psw" class="old_psw" v-model="old_password">
                                                     </div>
                                                     <br>
                                                     <h5>新密码:</h5>
                                                     <div class="col-md-6 form-group">
-                                                        <input type="password" name="new_psw" class="new_psw">
+                                                        <input type="password" name="new_psw" class="new_psw" v-model="new_password">
                                                     </div>
                                                     <br>
                                                     <h5>再次确认:</h5>
                                                     <div class="col-md-6 form-group">
-                                                        <input type="password" name="re_new_psw" class="re_new_psw">
+                                                        <input type="password" name="re_new_psw" class="re_new_psw" v-model="new_password2">
                                                     </div>
                                                     <br>
 
@@ -266,7 +266,7 @@
                                                     <p id="change_psw_err" class="change-err"></p>
                                                     <div class="col-lg-12 col-md-12 form-group">
                                                         <button class="theme-btn btn-style-two" type="submit"
-                                                            name="submit-form">修 改
+                                                            name="submit-form" @click="changepwd">修 改
                                                         </button>
                                                     </div>
 
@@ -293,12 +293,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>上传图像：</label>
-                                                    <input type="file" name="avatar" class="input_file"
-                                                        accept="image/jpg,image/jpeg,image/png,image/gif">
+                                                    <input type="file" name="file" class="input_file"
+                                                        accept="image/jpg,image/jpeg,image/png,image/gif" @change="upload">
                                                 </div>
                                                 <p id="change_img_err" class="change-err"></p>
                                                 <div class="form-group">
-                                                    <input type="submit" value="保 存" class="btn-style-two">
+                                                    <input type="submit" value="保 存" class="btn-style-two" @click="ChangeImg">
                                                 </div>
                                             </form>
 
@@ -320,33 +320,33 @@
                                                     <h5>用户名:</h5>
                                                     <div class="col-md-6 form-group">
                                                         <input type="text" name="username"
-                                                            :placeholder="username">
+                                                            :placeholder="user.username" v-model="user.username">
                                                     </div>
                                                     <br>
                                                     <h5>手机号:</h5>
                                                     <div class="col-md-6 form-group">
-                                                        <input type="text" name="signature" :placeholder="user.phone">
+                                                        <input type="text" name="signature" :placeholder="user.phone" v-model="user.phone">
                                                     </div>
                                                     <br>
                                                     <h5>邮箱:</h5>
                                                     <div class="col-md-6 form-group">
-                                                        <input type="email" name="email" :placeholder="user.email">
+                                                        <input type="email" name="email" :placeholder="user.email" v-model="user.email">
                                                     </div>
                                                     <br>
                                                     <h5>性别:</h5>
                                                     <div class="col-md-6 form-group">
 
                                                         <label><img src="image/boy.png" alt=""><input type="radio"
-                                                                name="sex" value="男生">男生&nbsp&nbsp&nbsp&nbsp</label>
+                                                                name="sex" value=1 v-model="user.sex">男生&nbsp&nbsp&nbsp&nbsp</label>
                                                         <label><img src="image/girl.png" alt=""><input type="radio"
-                                                                name="sex" value="女生">女生</label>
+                                                                name="sex" value=0 v-model="user.sex">女生</label>
 
                                                     </div>
                                                     <br>
                                                     <p id="change_info_err" class="change-err"></p>
                                                     <div class="col-lg-12 col-md-12 form-group">
                                                         <button class="theme-btn btn-style-two" type="submit"
-                                                            name="submit-form">修 改
+                                                            name="submit-form" @click="ChangeInfo">修 改
                                                         </button>
                                                     </div>
 
@@ -393,9 +393,6 @@
     <script src="center/js/jquery.nicescroll.min.js"></script>
     <script src="center/js/particle-alone.js"></script>
     <script src="center/js/script.js"></script>
-
-    <!--Google Map APi Key-->
-    <!-- <script src="http://ditu.google.cn/maps/api/js?key=AIzaSyATY4Rxc8jNvDpsK8ZetC7JyN4PFVYGCGM"></script> -->
     <script src="center/js/gmaps.js"></script>
     <script src="center/js/map-script.js"></script>
 
