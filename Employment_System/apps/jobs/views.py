@@ -22,7 +22,6 @@ class ShowCollect(APIView):
         u_works = []
         try:
             users = Collection_job.objects.filter(users_id=user_id)
-            print(users)
             for user in users:
                 # print('1111111111111', user)
                 u_works.append(user.jobs)
@@ -38,7 +37,6 @@ class ShowCollect(APIView):
             return JsonResponse({'code': 400,
                                  'message': 'page数据出错'})
         total_page = paginator.num_pages
-        print(page_works, total_page)
         works = []
         for work in page_works:
             works.append({
