@@ -54,3 +54,9 @@ class CreateUserSerializer(serializers.ModelSerializer):
         # print(token)
 
         return user
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username", "phone", "avatar_url", "email", "sex"]

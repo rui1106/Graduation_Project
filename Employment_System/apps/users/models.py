@@ -5,10 +5,16 @@ from apps.jobs.models import JobInfo
 
 
 class User(AbstractUser):
+    sex_choice = (
+        (0, '女生'),
+        (1, '男生'),
+    )
+    # avatar_url = "http://r7pjj3wfv.bkt.clouddn.com/LPP1.jpg"
     phone = models.CharField(max_length=11, unique=True, null=False, verbose_name='手机号')
     is_admin = models.IntegerField(default=0, verbose_name="是否为管理员")
     collection = models.ManyToManyField(JobInfo, through="Collection_job")
-    ImgUrl = models.CharField(default="", max_length=500, verbose_name="图片url")
+    avatar_url = models.CharField(default="", max_length=500, verbose_name="图片url")
+    sex = models.IntegerField(choices=sex_choice, default=0)
 
     class Meta:
         db_table = 'tb_users'
